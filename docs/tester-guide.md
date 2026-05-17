@@ -1,0 +1,52 @@
+# Tester Guide
+
+This is the short path for trying Decision-PGA from a private GitHub clone. It
+should take about 20 minutes on a machine with Python 3.10+.
+
+## Setup
+
+```bash
+git clone https://github.com/zmichels/Decision-PGA.git
+cd Decision-PGA
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
+## Check The Install
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/work_tracker.py docs/work --summary
+```
+
+## Try The Diagnostic CLI
+
+```bash
+decision-pga diagnose --pretty examples/tester/stable_probability_cloud.json
+decision-pga diagnose --pretty examples/tester/binary_ambiguity_model_outputs.json
+decision-pga diagnose --pretty examples/tester/diffuse_probability_cloud.json
+decision-pga diagnose --pretty examples/tester/regime_shift_sampled_responses.json
+decision-pga diagnose --pretty examples/tester/provider_scores.json
+```
+
+## Run The Benchmark
+
+```bash
+decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
+open reports/latest/advantage_report.md
+```
+
+The benchmark is synthetic and local. It does not call OpenAI, local LLMs, or
+provider APIs.
+
+## Optional MCP Smoke Test
+
+```bash
+python -m pip install -e ".[mcp]"
+decision-pga-mcp
+```
+
+The MCP command starts a local stdio server. It is meant to be launched by an
+MCP client or inspector rather than used as a normal terminal command.

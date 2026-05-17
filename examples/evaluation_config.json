@@ -1,0 +1,85 @@
+{
+  "seed": 20260517,
+  "scenarios": [
+    {
+      "name": "stable_confident",
+      "kind": "stable",
+      "expected_state": "stable",
+      "n_samples": 96,
+      "n_classes": 5,
+      "seed": 101
+    },
+    {
+      "name": "entropy_matched_binary",
+      "kind": "entropy_matched_binary",
+      "expected_state": "binary_ambiguity",
+      "n_samples": 120,
+      "n_classes": 5,
+      "seed": 102
+    },
+    {
+      "name": "entropy_matched_diffuse",
+      "kind": "entropy_matched_diffuse",
+      "expected_state": "diffuse_uncertainty",
+      "n_samples": 120,
+      "n_classes": 5,
+      "seed": 103
+    },
+    {
+      "name": "boundary_sensitive",
+      "kind": "boundary",
+      "expected_state": "boundary_sensitive",
+      "n_samples": 120,
+      "n_classes": 5,
+      "seed": 104
+    },
+    {
+      "name": "regime_shift",
+      "kind": "regime_shift",
+      "expected_state": "regime_shift",
+      "n_samples": 120,
+      "n_classes": 5,
+      "seed": 105
+    },
+    {
+      "name": "stable_low_confidence",
+      "kind": "stable_low_confidence",
+      "expected_state": "diffuse_uncertainty",
+      "n_samples": 120,
+      "n_classes": 5,
+      "seed": 106
+    },
+    {
+      "name": "class_sweep_3_binary",
+      "kind": "entropy_matched_binary",
+      "expected_state": "binary_ambiguity",
+      "n_samples": 96,
+      "n_classes": 3,
+      "seed": 107
+    },
+    {
+      "name": "class_sweep_8_diffuse",
+      "kind": "entropy_matched_diffuse",
+      "expected_state": "diffuse_uncertainty",
+      "n_samples": 96,
+      "n_classes": 8,
+      "seed": 108
+    },
+    {
+      "name": "sample_sweep_24_boundary",
+      "kind": "boundary",
+      "expected_state": "boundary_sensitive",
+      "n_samples": 24,
+      "n_classes": 5,
+      "seed": 109
+    },
+    {
+      "name": "sample_sweep_160_regime",
+      "kind": "regime_shift",
+      "expected_state": "regime_shift",
+      "n_samples": 160,
+      "n_classes": 5,
+      "seed": 110
+    }
+  ]
+}

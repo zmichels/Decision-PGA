@@ -7,16 +7,19 @@ import json
 import sys
 from collections.abc import Mapping, Sequence
 from dataclasses import fields
+from pathlib import Path
 from typing import TextIO
 
 import numpy as np
 
 from .diagnostics import DecisionPGAConfig, diagnose_probability_cloud
+from .evaluation import EvaluationConfig, run_evaluation
 from .model_adapters import ModelOutputObservation, diagnose_model_outputs
 from .provider_bridges import (
     observation_from_token_scores,
     observations_from_provider_scores,
 )
+from .reporting import write_evaluation_report
 from .source_adapters import (
     SampledResponse,
     TrajectoryStep,
@@ -32,6 +35,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "diagnose":
         return _run_diagnose(args, sys.stdin, sys.stdout, sys.stderr)
+    if args.command == "evaluate":
+        return _run_evaluate(args, sys.stdout, sys.stderr)
     parser.print_help(sys.stderr)
     return 2
 
@@ -57,6 +62,20 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Pretty-print JSON output.",
     )
+    evaluate = subparsers.add_parser(
+        "evaluate",
+        help="Run deterministic Decision-PGA benchmark scenarios.",
+    )
+    evaluate.add_argument(
+        "--config",
+        default=None,
+        help="Evaluation config JSON. Omit to use the default full scenario set.",
+    )
+    evaluate.add_argument(
+        "--output",
+        required=True,
+        help="Directory for metrics, CSV, Markdown, and plot outputs.",
+    )
     return parser
 
 
@@ -70,6 +89,35 @@ def _run_diagnose(
         payload = _read_payload(args.input, stdin)
         result = diagnose_payload(payload)
         _write_json(result, stdout, pretty=args.pretty)
+        return 0
+    except (OSError, TypeError, ValueError, json.JSONDecodeError) as exc:
+        _write_json({"error": str(exc)}, stderr, pretty=False)
+        return 2
+
+
+def _run_evaluate(
+    args: argparse.Namespace,
+    stdout: TextIO,
+    stderr: TextIO,
+) -> int:
+    try:
+        if args.config is None:
+            config = EvaluationConfig.default_full()
+        else:
+            config_payload = _read_payload(args.config, sys.stdin)
+            config = EvaluationConfig.from_mapping(config_payload)
+        report = run_evaluation(config)
+        written = write_evaluation_report(report, args.output)
+        _write_json(
+            {
+                "source": "evaluation",
+                "output_dir": str(Path(args.output)),
+                "written_files": [str(path) for path in written],
+                "advantage": report.advantage,
+            },
+            stdout,
+            pretty=False,
+        )
         return 0
     except (OSError, TypeError, ValueError, json.JSONDecodeError) as exc:
         _write_json({"error": str(exc)}, stderr, pretty=False)

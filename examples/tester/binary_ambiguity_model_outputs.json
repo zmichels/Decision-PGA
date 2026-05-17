@@ -1,0 +1,13 @@
+{
+  "source": "model_outputs",
+  "label": "tester-binary-ambiguity",
+  "kind": "logprobs",
+  "observations": [
+    {"approve": -0.72, "reject": -0.68, "defer": -4.20},
+    {"approve": -0.66, "reject": -0.74, "defer": -4.10},
+    {"approve": -0.78, "reject": -0.62, "defer": -4.40},
+    {"approve": -0.64, "reject": -0.78, "defer": -4.30},
+    {"approve": -0.74, "reject": -0.66, "defer": -4.00},
+    {"approve": -0.67, "reject": -0.73, "defer": -4.20}
+  ]
+}

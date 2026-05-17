@@ -1,11 +1,19 @@
 """Decision-PGA tools for probability clouds on the categorical simplex."""
 
+from .baselines import BaselineMetrics, baseline_metrics
 from .diagnostics import (
     DecisionAction,
     DecisionPGAConfig,
     DecisionPGADiagnostic,
     DecisionState,
     diagnose_probability_cloud,
+)
+from .evaluation import (
+    EvaluationConfig,
+    EvaluationReport,
+    ScenarioResult,
+    ScenarioSpec,
+    run_evaluation,
 )
 from .model_adapters import (
     ModelOutputDiagnostic,
@@ -43,15 +51,21 @@ from .source_adapters import (
 )
 
 __all__ = [
+    "BaselineMetrics",
     "DecisionAction",
     "DecisionPGAConfig",
     "DecisionPGADiagnostic",
     "DecisionState",
+    "EvaluationConfig",
+    "EvaluationReport",
     "ModelOutputDiagnostic",
     "ModelOutputObservation",
     "ObservationKind",
     "MissingScorePolicy",
     "PathPart",
+    "ScenarioResult",
+    "ScenarioSpec",
+    "baseline_metrics",
     "diagnose_probability_cloud",
     "diagnose_model_outputs",
     "ProbabilityPGAResult",
@@ -70,6 +84,7 @@ __all__ = [
     "probability_cloud_from_trajectory_steps",
     "diagnose_sampled_responses",
     "diagnose_trajectory_steps",
+    "run_evaluation",
     "sphere_exp",
     "sphere_log",
     "sqrt_embed",

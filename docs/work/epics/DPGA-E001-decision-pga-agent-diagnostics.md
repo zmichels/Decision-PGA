@@ -2,13 +2,14 @@
 id: DPGA-E001
 type: epic
 title: Agent-Facing Decision-PGA Diagnostics
-status: active
+status: done
 parent:
 children:
   - DPGA-F001
   - DPGA-F002
   - DPGA-F003
 created: 2026-05-16
+completed: 2026-05-17
 priority: P0
 tags: [decision-pga, ai, diagnostics]
 ---

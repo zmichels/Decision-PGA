@@ -96,6 +96,92 @@ class TestDecisionPGACLI(unittest.TestCase):
         self.assertIn("error", error)
         self.assertEqual(result.stdout, "")
 
+    def test_evaluate_command_writes_report_files(self):
+        config = {
+            "seed": 17,
+            "scenarios": [
+                {
+                    "name": "stable_fixture",
+                    "kind": "stable",
+                    "expected_state": "stable",
+                    "n_samples": 36,
+                    "n_classes": 5,
+                    "seed": 201,
+                },
+                {
+                    "name": "binary_fixture",
+                    "kind": "binary_ambiguity",
+                    "expected_state": "binary_ambiguity",
+                    "n_samples": 36,
+                    "n_classes": 5,
+                    "seed": 202,
+                },
+                {
+                    "name": "diffuse_fixture",
+                    "kind": "diffuse_uncertainty",
+                    "expected_state": "diffuse_uncertainty",
+                    "n_samples": 36,
+                    "n_classes": 5,
+                    "seed": 203,
+                },
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "evaluation_config.json"
+            output_dir = Path(tmpdir) / "report"
+            config_path.write_text(json.dumps(config), encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--config",
+                    str(config_path),
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            output = json.loads(result.stdout)
+
+            self.assertEqual(result.returncode, 0)
+            self.assertEqual(output["source"], "evaluation")
+            self.assertTrue((output_dir / "metrics.json").exists())
+            self.assertTrue((output_dir / "summary.csv").exists())
+            self.assertTrue((output_dir / "advantage_report.md").exists())
+
+    def test_evaluate_invalid_config_returns_machine_readable_error(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "bad_config.json"
+            output_dir = Path(tmpdir) / "report"
+            config_path.write_text('{"scenarios": []}', encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--config",
+                    str(config_path),
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            error = json.loads(result.stderr)
+
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("error", error)
+            self.assertEqual(result.stdout, "")
+
 
 def _run_cli_with_payload(payload):
     with tempfile.TemporaryDirectory() as tmpdir:

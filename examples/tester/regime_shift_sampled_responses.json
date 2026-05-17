@@ -1,0 +1,13 @@
+{
+  "source": "sampled_responses",
+  "label": "tester-regime-shift",
+  "labels": ["approve", "reject", "defer"],
+  "responses": [
+    "approve", "approve", "approve", "approve", "approve", "approve",
+    "approve", "approve", "approve", "approve", "approve", "approve",
+    "reject", "reject", "reject", "reject", "reject", "reject",
+    "reject", "reject", "reject", "reject", "reject", "reject"
+  ],
+  "window_size": 6,
+  "step": 6
+}

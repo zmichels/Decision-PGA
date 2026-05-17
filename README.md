@@ -33,6 +33,7 @@ Run the JSON CLI:
 decision-pga diagnose examples/model_outputs.json
 cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/provider_scores.json
+decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 ```
 
 Open or execute:
@@ -128,7 +129,25 @@ See `docs/model-output-adapters.md` for the provider-neutral model output
 adapter boundary and `docs/source-adapters.md` for sampled-response and
 trajectory adapters. Provider-shaped response extraction is documented in
 `docs/provider-bridges.md`. The process-level JSON contract is documented in
-`docs/cli.md`.
+`docs/cli.md`. The synthetic benchmark harness is documented in
+`docs/evaluation.md`.
+
+## Local MCP Server
+
+Install the optional MCP dependency and launch the local stdio server:
+
+```bash
+python -m pip install -e ".[mcp]"
+decision-pga-mcp
+```
+
+The MCP server is local, deterministic, and read-only. It exposes the same
+diagnostic contract as the Python API and CLI. See `docs/mcp-server.md`.
+
+## Tester Path
+
+For a short private-repo trial, start with `docs/tester-guide.md` and capture
+comments with `docs/tester-feedback-template.md`.
 
 ## Notes
 

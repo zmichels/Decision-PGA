@@ -1,0 +1,15 @@
+{
+  "source": "provider_scores",
+  "label": "tester-provider-scores",
+  "provider": "example-provider",
+  "score_path": ["output", "scores"],
+  "candidates": ["approve", "reject", "defer"],
+  "kind": "logprobs",
+  "records": [
+    {"id": "sample-1", "output": {"scores": {"approve": -0.13, "reject": -2.53, "defer": -3.10}}},
+    {"id": "sample-2", "output": {"scores": {"approve": -0.16, "reject": -2.30, "defer": -3.20}}},
+    {"id": "sample-3", "output": {"scores": {"approve": -0.12, "reject": -2.66, "defer": -3.30}}},
+    {"id": "sample-4", "output": {"scores": {"approve": -0.14, "reject": -2.44, "defer": -3.05}}}
+  ],
+  "observation_id_path": ["id"]
+}

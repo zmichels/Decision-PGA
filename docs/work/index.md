@@ -2,7 +2,8 @@
 
 This folder tracks Decision-PGA work using Markdown files with YAML frontmatter.
 
-Start with `DPGA-E001`, then inspect active work under `DPGA-S003`.
+Start with `DPGA-E002` for current evidence, tester-readiness, and MCP work.
+`DPGA-E001` captures the accepted prototype history.
 
 ## Commands
 

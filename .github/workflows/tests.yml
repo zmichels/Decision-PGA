@@ -32,5 +32,14 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
 
+      - name: Run evaluation smoke test
+        run: python -m decision_pga.cli evaluate --config examples/evaluation_config.json --output reports/ci
+
       - name: Validate work tracker
         run: python scripts/work_tracker.py docs/work --summary
+
+      - name: Install MCP extra
+        run: python -m pip install -e ".[mcp]"
+
+      - name: Smoke test MCP server construction
+        run: python -c "from decision_pga.mcp_server import build_server; build_server()"

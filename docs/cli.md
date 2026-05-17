@@ -7,6 +7,7 @@ shell scripts, eval harnesses, and future services.
 decision-pga diagnose examples/model_outputs.json
 cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/model_outputs.json
+decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 ```
 
 Exit codes:
@@ -144,3 +145,17 @@ Any source can include a `config` object with fields from
   }
 }
 ```
+
+## Evaluation Command
+
+`decision-pga evaluate` runs deterministic synthetic benchmark scenarios and
+writes report artifacts:
+
+```bash
+decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
+```
+
+The output directory contains `metrics.json`, `summary.csv`,
+`confusion_matrix.csv`, `advantage_report.md`, and plot PNGs. The command emits
+a small JSON payload on stdout listing the written files and conservative
+advantage summary.

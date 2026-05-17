@@ -13,8 +13,17 @@ dependencies = [
   "matplotlib>=3.8",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+]
+mcp = [
+  "mcp>=1.2.0",
+]
+
 [project.scripts]
 decision-pga = "decision_pga.cli:main"
+decision-pga-mcp = "decision_pga.mcp_server:main"
 
 [tool.setuptools.packages.find]
 include = ["decision_pga*"]
