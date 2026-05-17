@@ -16,8 +16,14 @@ Launch the stdio server:
 decision-pga-mcp
 ```
 
-For MCP Inspector-style workflows, point the client at the command above from
-the repository environment. The server exposes these tools:
+Open the server in MCP Inspector:
+
+```bash
+npx @modelcontextprotocol/inspector decision-pga-mcp
+```
+
+For Inspector workflows, run the command from an environment where
+`decision-pga-mcp` is installed. The server exposes these tools:
 
 - `diagnose_probability_cloud`
 - `diagnose_model_outputs`
