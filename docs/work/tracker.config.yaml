@@ -1,0 +1,32 @@
+project_prefix: DPGA
+project_name: Decision-PGA
+statuses:
+  - proposed
+  - ready
+  - active
+  - blocked
+  - done
+  - deferred
+  - superseded
+priorities:
+  - P0
+  - P1
+  - P2
+  - P3
+types:
+  epic:
+    folder: epics
+    id_letter: E
+    parent:
+  feature:
+    folder: features
+    id_letter: F
+    parent: epic
+  story:
+    folder: stories
+    id_letter: S
+    parent: feature
+  task:
+    folder: tasks
+    id_letter: T
+    parent: story

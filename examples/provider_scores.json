@@ -1,0 +1,44 @@
+{
+  "source": "provider_scores",
+  "score_path": ["output", "scores"],
+  "candidates": ["approve", "reject", "defer"],
+  "kind": "logprobs",
+  "records": [
+    {
+      "output": {
+        "scores": {
+          "approve": -0.13,
+          "reject": -2.53,
+          "defer": -3.10
+        }
+      }
+    },
+    {
+      "output": {
+        "scores": {
+          "approve": -0.16,
+          "reject": -2.30,
+          "defer": -3.20
+        }
+      }
+    },
+    {
+      "output": {
+        "scores": {
+          "approve": -0.12,
+          "reject": -2.66,
+          "defer": -3.30
+        }
+      }
+    },
+    {
+      "output": {
+        "scores": {
+          "approve": -0.14,
+          "reject": -2.44,
+          "defer": -3.05
+        }
+      }
+    }
+  ]
+}

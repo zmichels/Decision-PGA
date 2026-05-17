@@ -1,0 +1,20 @@
+{
+  "source": "trajectory_steps",
+  "labels": ["retrieve", "analyze", "answer"],
+  "steps": [
+    "retrieve",
+    "retrieve",
+    "retrieve",
+    "retrieve",
+    "analyze",
+    "analyze",
+    "analyze",
+    "answer",
+    "answer",
+    "answer",
+    "answer",
+    "answer"
+  ],
+  "window_size": 3,
+  "step": 3
+}

@@ -1,0 +1,20 @@
+{
+  "source": "sampled_responses",
+  "labels": ["approve", "reject", "defer"],
+  "responses": [
+    "approve",
+    "approve",
+    "approve",
+    "approve",
+    "approve",
+    "approve",
+    "reject",
+    "reject",
+    "reject",
+    "reject",
+    "reject",
+    "reject"
+  ],
+  "window_size": 3,
+  "step": 3
+}

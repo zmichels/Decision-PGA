@@ -1,0 +1,36 @@
+{
+  "source": "provider_token_scores",
+  "token_scores_path": ["top_logprobs"],
+  "candidates": ["approve", "reject", "defer"],
+  "kind": "logprobs",
+  "records": [
+    {
+      "top_logprobs": [
+        {"token": " approve", "logprob": -0.13},
+        {"token": " reject", "logprob": -2.53},
+        {"token": " defer", "logprob": -3.10}
+      ]
+    },
+    {
+      "top_logprobs": [
+        {"token": " approve", "logprob": -0.16},
+        {"token": " reject", "logprob": -2.30},
+        {"token": " defer", "logprob": -3.20}
+      ]
+    },
+    {
+      "top_logprobs": [
+        {"token": " approve", "logprob": -0.12},
+        {"token": " reject", "logprob": -2.66},
+        {"token": " defer", "logprob": -3.30}
+      ]
+    },
+    {
+      "top_logprobs": [
+        {"token": " approve", "logprob": -0.14},
+        {"token": " reject", "logprob": -2.44},
+        {"token": " defer", "logprob": -3.05}
+      ]
+    }
+  ]
+}

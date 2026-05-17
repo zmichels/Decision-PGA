@@ -1,0 +1,10 @@
+{
+  "source": "model_outputs",
+  "kind": "logprobs",
+  "observations": [
+    {"approve": -0.13, "reject": -2.53, "defer": -3.10},
+    {"approve": -0.16, "reject": -2.30, "defer": -3.20},
+    {"approve": -0.12, "reject": -2.66, "defer": -3.30},
+    {"approve": -0.14, "reject": -2.44, "defer": -3.05}
+  ]
+}
