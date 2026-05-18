@@ -12,6 +12,8 @@ from typing import TextIO
 
 import numpy as np
 
+from .application_evaluation import run_application_evaluation_suite
+from .application_reporting import write_application_evaluation_report
 from .diagnostics import DecisionPGAConfig, diagnose_probability_cloud
 from .evaluation import EvaluationConfig, run_evaluation
 from .model_adapters import ModelOutputObservation, diagnose_model_outputs
@@ -64,7 +66,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     evaluate = subparsers.add_parser(
         "evaluate",
-        help="Run deterministic Decision-PGA benchmark scenarios.",
+        help="Run deterministic benchmark or application evaluation suites.",
+    )
+    evaluate.add_argument(
+        "--suite",
+        default="benchmark",
+        help="Evaluation suite to run: benchmark, application, or all.",
     )
     evaluate.add_argument(
         "--config",
@@ -101,27 +108,65 @@ def _run_evaluate(
     stderr: TextIO,
 ) -> int:
     try:
-        if args.config is None:
-            config = EvaluationConfig.default_full()
-        else:
-            config_payload = _read_payload(args.config, sys.stdin)
-            config = EvaluationConfig.from_mapping(config_payload)
-        report = run_evaluation(config)
-        written = write_evaluation_report(report, args.output)
-        _write_json(
-            {
-                "source": "evaluation",
-                "output_dir": str(Path(args.output)),
-                "written_files": [str(path) for path in written],
-                "advantage": report.advantage,
-            },
-            stdout,
-            pretty=False,
-        )
-        return 0
+        suite = str(args.suite)
+        if suite == "benchmark":
+            report = run_evaluation(_evaluation_config_from_args(args))
+            written = write_evaluation_report(report, args.output)
+            _write_json(
+                {
+                    "source": "evaluation",
+                    "output_dir": str(Path(args.output)),
+                    "written_files": [str(path) for path in written],
+                    "advantage": report.advantage,
+                },
+                stdout,
+                pretty=False,
+            )
+            return 0
+        if suite == "application":
+            report = run_application_evaluation_suite()
+            written = write_application_evaluation_report(report, args.output)
+            _write_json(
+                {
+                    "source": "application_evaluation",
+                    "output_dir": str(Path(args.output)),
+                    "written_files": [str(path) for path in written],
+                    "summary": report.summary,
+                },
+                stdout,
+                pretty=False,
+            )
+            return 0
+        if suite == "all":
+            benchmark_report = run_evaluation(_evaluation_config_from_args(args))
+            application_report = run_application_evaluation_suite()
+            written = (
+                *write_evaluation_report(benchmark_report, args.output),
+                *write_application_evaluation_report(application_report, args.output),
+            )
+            _write_json(
+                {
+                    "source": "evaluation_bundle",
+                    "output_dir": str(Path(args.output)),
+                    "written_files": [str(path) for path in written],
+                    "advantage": benchmark_report.advantage,
+                    "application_summary": application_report.summary,
+                },
+                stdout,
+                pretty=False,
+            )
+            return 0
+        raise ValueError(f"unsupported evaluation suite: {suite!r}")
     except (OSError, TypeError, ValueError, json.JSONDecodeError) as exc:
         _write_json({"error": str(exc)}, stderr, pretty=False)
         return 2
+
+
+def _evaluation_config_from_args(args: argparse.Namespace) -> EvaluationConfig:
+    if args.config is None:
+        return EvaluationConfig.default_full()
+    config_payload = _read_payload(args.config, sys.stdin)
+    return EvaluationConfig.from_mapping(config_payload)
 
 
 def diagnose_payload(payload: Mapping[str, object]) -> dict[str, object]:

@@ -1,0 +1,13 @@
+{
+  "source": "probability_cloud",
+  "label": "RAG evidence-conflict sketch",
+  "labels": ["claim_a_supported", "claim_b_supported", "insufficient_evidence", "irrelevant_retrieval"],
+  "probabilities": [
+    [0.49, 0.38, 0.09, 0.04],
+    [0.43, 0.44, 0.09, 0.04],
+    [0.51, 0.36, 0.09, 0.04],
+    [0.38, 0.49, 0.09, 0.04],
+    [0.45, 0.43, 0.08, 0.04],
+    [0.41, 0.47, 0.08, 0.04]
+  ]
+}

@@ -35,6 +35,9 @@ jobs:
       - name: Run evaluation smoke test
         run: python -m decision_pga.cli evaluate --config examples/evaluation_config.json --output reports/ci
 
+      - name: Run application evaluation smoke test
+        run: python -m decision_pga.cli evaluate --suite application --output reports/application-ci
+
       - name: Validate work tracker
         run: python scripts/work_tracker.py docs/work --summary
 

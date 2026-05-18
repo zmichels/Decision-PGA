@@ -1,0 +1,15 @@
+{
+  "source": "provider_scores",
+  "label": "tool-action ambiguity fixture",
+  "score_path": ["scores"],
+  "candidates": ["search_docs", "query_database", "ask_clarifying_question", "draft_answer"],
+  "kind": "probabilities",
+  "records": [
+    {"scores": {"search_docs": 0.46, "query_database": 0.42, "ask_clarifying_question": 0.08, "draft_answer": 0.04}},
+    {"scores": {"search_docs": 0.43, "query_database": 0.45, "ask_clarifying_question": 0.08, "draft_answer": 0.04}},
+    {"scores": {"search_docs": 0.47, "query_database": 0.40, "ask_clarifying_question": 0.09, "draft_answer": 0.04}},
+    {"scores": {"search_docs": 0.41, "query_database": 0.47, "ask_clarifying_question": 0.08, "draft_answer": 0.04}},
+    {"scores": {"search_docs": 0.45, "query_database": 0.43, "ask_clarifying_question": 0.08, "draft_answer": 0.04}},
+    {"scores": {"search_docs": 0.42, "query_database": 0.46, "ask_clarifying_question": 0.08, "draft_answer": 0.04}}
+  ]
+}

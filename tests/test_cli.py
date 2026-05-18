@@ -155,6 +155,129 @@ class TestDecisionPGACLI(unittest.TestCase):
             self.assertTrue((output_dir / "summary.csv").exists())
             self.assertTrue((output_dir / "advantage_report.md").exists())
 
+    def test_evaluate_benchmark_suite_option_preserves_existing_report_files(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir) / "benchmark"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--suite",
+                    "benchmark",
+                    "--config",
+                    "examples/evaluation_config.json",
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            output = json.loads(result.stdout)
+            written = {Path(path).name for path in output["written_files"]}
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "evaluation")
+        self.assertEqual(
+            written,
+            {
+                "metrics.json",
+                "summary.csv",
+                "confusion_matrix.csv",
+                "advantage_report.md",
+                "separability.png",
+                "confusion_matrix.png",
+                "pga_vs_baseline_deltas.png",
+            },
+        )
+
+    def test_evaluate_application_suite_writes_gap_review_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir) / "application"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--suite",
+                    "application",
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            output = json.loads(result.stdout)
+            written = {Path(path).name for path in output["written_files"]}
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "application_evaluation")
+        self.assertEqual(
+            written,
+            {
+                "application_metrics.json",
+                "application_summary.csv",
+                "gap_matrix.csv",
+                "application_report.md",
+                "decision-pga-gap-review.pdf",
+            },
+        )
+
+    def test_evaluate_all_suite_writes_benchmark_and_application_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir) / "all"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--suite",
+                    "all",
+                    "--config",
+                    "examples/evaluation_config.json",
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            output = json.loads(result.stdout)
+            written = {Path(path).name for path in output["written_files"]}
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "evaluation_bundle")
+        self.assertIn("metrics.json", written)
+        self.assertIn("application_metrics.json", written)
+        self.assertIn("decision-pga-gap-review.pdf", written)
+
+    def test_evaluate_invalid_suite_returns_machine_readable_error(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "decision_pga.cli",
+                "evaluate",
+                "--suite",
+                "not-a-suite",
+                "--output",
+                "reports/unused",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        error = json.loads(result.stderr)
+
+        self.assertEqual(result.returncode, 2)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("unsupported evaluation suite", error["error"])
+
     def test_evaluate_invalid_config_returns_machine_readable_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             config_path = Path(tmpdir) / "bad_config.json"

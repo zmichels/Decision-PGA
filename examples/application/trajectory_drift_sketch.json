@@ -1,0 +1,19 @@
+{
+  "source": "trajectory_steps",
+  "label": "agent trajectory drift sketch",
+  "labels": ["retrieve", "inspect", "ask", "answer"],
+  "steps": [
+    "retrieve",
+    "retrieve",
+    "inspect",
+    "retrieve",
+    "inspect",
+    "ask",
+    "ask",
+    "answer",
+    "answer",
+    "answer"
+  ],
+  "window_size": 4,
+  "step": 2
+}

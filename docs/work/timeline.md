@@ -20,3 +20,10 @@ Use this file for narrative milestones. Keep canonical status in individual work
 - Added deterministic evaluation harness work for comparing PGA against entropy, margin, and drift baselines.
 - Added private-tester docs, tester example payloads, and optional package extras.
 - Added a local stdio MCP server wrapper around the stable diagnostic contract.
+
+## 2026-05-18
+
+- Added the application-gap review bridge for agentic AI use cases.
+- Added a polished Decision-PGA gap-review article and generated application-report PDF path.
+- Added `decision-pga evaluate --suite application` and `--suite all` while preserving benchmark behavior.
+- Added example application payloads for tool/action ambiguity, RAG/evidence conflict, and trajectory drift.

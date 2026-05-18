@@ -41,6 +41,18 @@ open reports/latest/advantage_report.md
 The benchmark is synthetic and local. It does not call OpenAI, local LLMs, or
 provider APIs.
 
+## Read The Application Gap Review
+
+```bash
+decision-pga evaluate --suite application --output reports/application-latest
+open reports/application-latest/application_report.md
+open docs/articles/decision-pga-gap-review.md
+```
+
+The application suite is not a live model benchmark. It is a structured review
+of where Decision-PGA is likely useful now, where adapters are missing, and
+which two deeper tracks should be tested first.
+
 ## Optional MCP Smoke Test
 
 ```bash

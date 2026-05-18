@@ -8,6 +8,7 @@ decision-pga diagnose examples/model_outputs.json
 cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/model_outputs.json
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
+decision-pga evaluate --suite application --output reports/application-latest
 ```
 
 Exit codes:
@@ -148,14 +149,26 @@ Any source can include a `config` object with fields from
 
 ## Evaluation Command
 
-`decision-pga evaluate` runs deterministic synthetic benchmark scenarios and
-writes report artifacts:
+`decision-pga evaluate` runs deterministic synthetic benchmark scenarios by
+default and writes report artifacts:
 
 ```bash
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
+decision-pga evaluate --suite benchmark --config examples/evaluation_config.json --output reports/latest
 ```
 
 The output directory contains `metrics.json`, `summary.csv`,
 `confusion_matrix.csv`, `advantage_report.md`, and plot PNGs. The command emits
 a small JSON payload on stdout listing the written files and conservative
 advantage summary.
+
+The application suite writes the gap-review artifacts used for tester planning:
+
+```bash
+decision-pga evaluate --suite application --output reports/application-latest
+```
+
+That output contains `application_metrics.json`, `application_summary.csv`,
+`gap_matrix.csv`, `application_report.md`, and
+`decision-pga-gap-review.pdf`. Use `--suite all` to write benchmark and
+application artifacts in one run.
