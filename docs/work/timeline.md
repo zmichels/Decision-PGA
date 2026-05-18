@@ -28,3 +28,4 @@ Use this file for narrative milestones. Keep canonical status in individual work
 - Added `decision-pga evaluate --suite application` and `--suite all` while preserving benchmark behavior.
 - Added example application payloads for tool/action ambiguity, RAG/evidence conflict, and trajectory drift.
 - Added a separate document-extraction gap bridge with article, examples, and `decision-pga evaluate --suite document-extraction`.
+- Added a healthcare-focused publication draft and no-cost one-week publication plan.

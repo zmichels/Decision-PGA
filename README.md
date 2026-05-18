@@ -137,7 +137,10 @@ trajectory adapters. Provider-shaped response extraction is documented in
 and `docs/articles/decision-pga-gap-review.md`. The separate document-extraction
 gap bridge is documented in `docs/document-extraction-gap-review.md`,
 `docs/decision-pga-document-extraction-scenarios.md`, and
-`docs/articles/decision-pga-document-extraction-gap-review.md`.
+`docs/articles/decision-pga-document-extraction-gap-review.md`. The
+healthcare-focused publication draft is
+`docs/articles/decision-pga-healthcare-decision-state-diagnostics.md`, with a
+one-week publication checklist in `docs/healthcare-publication-plan.md`.
 
 ## Local MCP Server
 
