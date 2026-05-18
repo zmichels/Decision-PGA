@@ -53,6 +53,18 @@ The application suite is not a live model benchmark. It is a structured review
 of where Decision-PGA is likely useful now, where adapters are missing, and
 which two deeper tracks should be tested first.
 
+## Read The Document Extraction Gap Review
+
+```bash
+decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
+open reports/document-extraction-latest/document_extraction_report.md
+open docs/articles/decision-pga-document-extraction-gap-review.md
+```
+
+This suite is separate from the broader application suite. It focuses on data
+extraction from documents and does not call OCR, layout, model, or provider
+APIs.
+
 ## Optional MCP Smoke Test
 
 ```bash

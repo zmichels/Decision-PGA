@@ -9,6 +9,7 @@ cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/model_outputs.json
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 decision-pga evaluate --suite application --output reports/application-latest
+decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
 ```
 
 Exit codes:
@@ -170,5 +171,16 @@ decision-pga evaluate --suite application --output reports/application-latest
 
 That output contains `application_metrics.json`, `application_summary.csv`,
 `gap_matrix.csv`, `application_report.md`, and
-`decision-pga-gap-review.pdf`. Use `--suite all` to write benchmark and
-application artifacts in one run.
+`decision-pga-gap-review.pdf`.
+
+The document-extraction suite is separate from the broader application suite:
+
+```bash
+decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
+```
+
+That output contains `document_extraction_metrics.json`,
+`document_extraction_summary.csv`, `document_extraction_gap_matrix.csv`,
+`document_extraction_report.md`, and
+`decision-pga-document-extraction-gap-review.pdf`. Use `--suite all` to write
+benchmark, application, and document-extraction artifacts in one run.

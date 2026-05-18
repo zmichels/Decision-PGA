@@ -15,6 +15,8 @@ import numpy as np
 from .application_evaluation import run_application_evaluation_suite
 from .application_reporting import write_application_evaluation_report
 from .diagnostics import DecisionPGAConfig, diagnose_probability_cloud
+from .document_extraction_evaluation import run_document_extraction_evaluation_suite
+from .document_extraction_reporting import write_document_extraction_evaluation_report
 from .evaluation import EvaluationConfig, run_evaluation
 from .model_adapters import ModelOutputObservation, diagnose_model_outputs
 from .provider_bridges import (
@@ -71,7 +73,7 @@ def _build_parser() -> argparse.ArgumentParser:
     evaluate.add_argument(
         "--suite",
         default="benchmark",
-        help="Evaluation suite to run: benchmark, application, or all.",
+        help="Evaluation suite to run: benchmark, application, document-extraction, or all.",
     )
     evaluate.add_argument(
         "--config",
@@ -137,12 +139,28 @@ def _run_evaluate(
                 pretty=False,
             )
             return 0
+        if suite == "document-extraction":
+            report = run_document_extraction_evaluation_suite()
+            written = write_document_extraction_evaluation_report(report, args.output)
+            _write_json(
+                {
+                    "source": "document_extraction_evaluation",
+                    "output_dir": str(Path(args.output)),
+                    "written_files": [str(path) for path in written],
+                    "summary": report.summary,
+                },
+                stdout,
+                pretty=False,
+            )
+            return 0
         if suite == "all":
             benchmark_report = run_evaluation(_evaluation_config_from_args(args))
             application_report = run_application_evaluation_suite()
+            document_extraction_report = run_document_extraction_evaluation_suite()
             written = (
                 *write_evaluation_report(benchmark_report, args.output),
                 *write_application_evaluation_report(application_report, args.output),
+                *write_document_extraction_evaluation_report(document_extraction_report, args.output),
             )
             _write_json(
                 {
@@ -151,6 +169,7 @@ def _run_evaluate(
                     "written_files": [str(path) for path in written],
                     "advantage": benchmark_report.advantage,
                     "application_summary": application_report.summary,
+                    "document_extraction_summary": document_extraction_report.summary,
                 },
                 stdout,
                 pretty=False,

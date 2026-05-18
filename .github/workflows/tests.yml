@@ -38,6 +38,9 @@ jobs:
       - name: Run application evaluation smoke test
         run: python -m decision_pga.cli evaluate --suite application --output reports/application-ci
 
+      - name: Run document extraction evaluation smoke test
+        run: python -m decision_pga.cli evaluate --suite document-extraction --output reports/document-extraction-ci
+
       - name: Validate work tracker
         run: python scripts/work_tracker.py docs/work --summary
 

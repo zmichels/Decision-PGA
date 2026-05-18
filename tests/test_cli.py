@@ -227,6 +227,40 @@ class TestDecisionPGACLI(unittest.TestCase):
             },
         )
 
+    def test_evaluate_document_extraction_suite_writes_separate_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir) / "document-extraction"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "decision_pga.cli",
+                    "evaluate",
+                    "--suite",
+                    "document-extraction",
+                    "--output",
+                    str(output_dir),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            output = json.loads(result.stdout)
+            written = {Path(path).name for path in output["written_files"]}
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "document_extraction_evaluation")
+        self.assertEqual(
+            written,
+            {
+                "document_extraction_metrics.json",
+                "document_extraction_summary.csv",
+                "document_extraction_gap_matrix.csv",
+                "document_extraction_report.md",
+                "decision-pga-document-extraction-gap-review.pdf",
+            },
+        )
+
     def test_evaluate_all_suite_writes_benchmark_and_application_artifacts(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             output_dir = Path(tmpdir) / "all"
@@ -254,7 +288,9 @@ class TestDecisionPGACLI(unittest.TestCase):
         self.assertEqual(output["source"], "evaluation_bundle")
         self.assertIn("metrics.json", written)
         self.assertIn("application_metrics.json", written)
+        self.assertIn("document_extraction_metrics.json", written)
         self.assertIn("decision-pga-gap-review.pdf", written)
+        self.assertIn("decision-pga-document-extraction-gap-review.pdf", written)
 
     def test_evaluate_invalid_suite_returns_machine_readable_error(self):
         result = subprocess.run(

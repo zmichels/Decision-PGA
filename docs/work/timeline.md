@@ -27,3 +27,4 @@ Use this file for narrative milestones. Keep canonical status in individual work
 - Added a polished Decision-PGA gap-review article and generated application-report PDF path.
 - Added `decision-pga evaluate --suite application` and `--suite all` while preserving benchmark behavior.
 - Added example application payloads for tool/action ambiguity, RAG/evidence conflict, and trajectory drift.
+- Added a separate document-extraction gap bridge with article, examples, and `decision-pga evaluate --suite document-extraction`.

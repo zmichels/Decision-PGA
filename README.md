@@ -35,6 +35,7 @@ cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/provider_scores.json
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 decision-pga evaluate --suite application --output reports/application-latest
+decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
 ```
 
 Open or execute:
@@ -133,7 +134,10 @@ trajectory adapters. Provider-shaped response extraction is documented in
 `docs/cli.md`. The synthetic benchmark harness is documented in
 `docs/evaluation.md`. The application-gap bridge and review article are in
 `docs/application-gap-review.md`, `docs/decision-pga-application-scenarios.md`,
-and `docs/articles/decision-pga-gap-review.md`.
+and `docs/articles/decision-pga-gap-review.md`. The separate document-extraction
+gap bridge is documented in `docs/document-extraction-gap-review.md`,
+`docs/decision-pga-document-extraction-scenarios.md`, and
+`docs/articles/decision-pga-document-extraction-gap-review.md`.
 
 ## Local MCP Server
 

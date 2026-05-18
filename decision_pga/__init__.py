@@ -16,6 +16,13 @@ from .diagnostics import (
     DecisionState,
     diagnose_probability_cloud,
 )
+from .document_extraction_evaluation import (
+    DOCUMENT_EXTRACTION_GAP_FAMILIES,
+    DocumentExtractionEvaluationReport,
+    DocumentExtractionScenario,
+    run_document_extraction_evaluation_suite,
+)
+from .document_extraction_reporting import write_document_extraction_evaluation_report
 from .evaluation import (
     EvaluationConfig,
     EvaluationReport,
@@ -67,6 +74,9 @@ __all__ = [
     "DecisionPGAConfig",
     "DecisionPGADiagnostic",
     "DecisionState",
+    "DOCUMENT_EXTRACTION_GAP_FAMILIES",
+    "DocumentExtractionEvaluationReport",
+    "DocumentExtractionScenario",
     "EvaluationConfig",
     "EvaluationReport",
     "FitLabel",
@@ -97,10 +107,12 @@ __all__ = [
     "diagnose_sampled_responses",
     "diagnose_trajectory_steps",
     "run_application_evaluation_suite",
+    "run_document_extraction_evaluation_suite",
     "run_evaluation",
     "sphere_exp",
     "sphere_log",
     "sqrt_embed",
     "synthetic_probability_cloud",
     "write_application_evaluation_report",
+    "write_document_extraction_evaluation_report",
 ]

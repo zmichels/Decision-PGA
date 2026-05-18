@@ -55,3 +55,25 @@ output directory:
 ```bash
 decision-pga evaluate --suite all --config examples/evaluation_config.json --output reports/all-latest
 ```
+
+## Document Extraction Gap Suite
+
+The document-extraction suite is separate from the broader application suite.
+It focuses on data extraction from documents: candidate field values, source
+spans, table rows, line items, OCR/layout variants, version conflicts, review
+triage, and monitoring.
+
+```bash
+decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
+```
+
+It writes:
+
+- `document_extraction_metrics.json`: complete machine-readable extraction review.
+- `document_extraction_summary.csv`: one row per extraction scenario.
+- `document_extraction_gap_matrix.csv`: compact gap matrix for planning.
+- `document_extraction_report.md`: conservative human-readable interpretation.
+- `decision-pga-document-extraction-gap-review.pdf`: generated article-style PDF.
+
+`--suite all` now writes benchmark, application, and document-extraction
+artifacts together.

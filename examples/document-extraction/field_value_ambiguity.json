@@ -1,0 +1,13 @@
+{
+  "source": "probability_cloud",
+  "label": "invoice total field-value ambiguity",
+  "labels": ["total_1240_00", "subtotal_1180_00", "tax_60_00", "missing"],
+  "probabilities": [
+    [0.48, 0.42, 0.06, 0.04],
+    [0.45, 0.45, 0.06, 0.04],
+    [0.51, 0.39, 0.06, 0.04],
+    [0.41, 0.49, 0.06, 0.04],
+    [0.47, 0.43, 0.06, 0.04],
+    [0.43, 0.47, 0.06, 0.04]
+  ]
+}

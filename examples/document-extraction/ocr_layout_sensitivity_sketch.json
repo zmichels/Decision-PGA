@@ -1,0 +1,13 @@
+{
+  "source": "probability_cloud",
+  "label": "OCR layout sensitivity sketch",
+  "labels": ["effective_date_2026_05_01", "effective_date_2026_06_01", "execution_date_2026_05_01", "missing"],
+  "probabilities": [
+    [0.80, 0.08, 0.08, 0.04],
+    [0.78, 0.09, 0.09, 0.04],
+    [0.76, 0.10, 0.10, 0.04],
+    [0.22, 0.63, 0.10, 0.05],
+    [0.20, 0.66, 0.09, 0.05],
+    [0.24, 0.61, 0.10, 0.05]
+  ]
+}
