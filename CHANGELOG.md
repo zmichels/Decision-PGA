@@ -2,7 +2,7 @@
 
 ## 0.1.0 - 2026-05-19
 
-Initial public release candidate.
+Initial public research release.
 
 - Added Fisher-Rao/square-root probability-cloud PGA core.
 - Added diagnostic states for stable, binary ambiguity, diffuse uncertainty,
