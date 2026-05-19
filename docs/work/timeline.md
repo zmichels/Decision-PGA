@@ -16,9 +16,9 @@ Use this file for narrative milestones. Keep canonical status in individual work
 - Added sampled-response and trajectory source adapters that convert rolling windows into candidate-aligned probability clouds.
 - Added provider bridge helpers for nested score maps and token-score entries without SDK imports.
 - Added the `decision-pga diagnose` JSON CLI and example payloads for the first process-level tool boundary.
-- Pushed the private GitHub repository at `zmichels/Decision-PGA` and added Python 3.10-3.12 CI.
+- Pushed the GitHub repository at `zmichels/Decision-PGA` and added Python 3.10-3.12 CI.
 - Added deterministic evaluation harness work for comparing PGA against entropy, margin, and drift baselines.
-- Added private-tester docs, tester example payloads, and optional package extras.
+- Added tester docs, tester example payloads, and optional package extras.
 - Added a local stdio MCP server wrapper around the stable diagnostic contract.
 
 ## 2026-05-18

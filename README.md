@@ -18,11 +18,22 @@ summaries blur together:
 - perturbation-sensitive boundary cases;
 - sliding-window regime shifts.
 
+## Status
+
+This is an initial public research release. It is intended for collaborators,
+agent-tooling experiments, synthetic benchmarks, and critique. It is not a
+production safety layer, not clinical validation, and not a medical device or
+clinical decision support product. The examples are synthetic or public-facing
+fixtures; the package does not call model APIs or require credentials.
+
 ## Quick Start
 
 ```bash
+git clone https://github.com/zmichels/Decision-PGA.git
+cd Decision-PGA
 python3 -m venv .venv
 . .venv/bin/activate
+python -m pip install --upgrade pip
 python -m pip install -e .
 python -m unittest discover -s tests -v
 ```
@@ -156,7 +167,7 @@ diagnostic contract as the Python API and CLI. See `docs/mcp-server.md`.
 
 ## Tester Path
 
-For a short private-repo trial, start with `docs/tester-guide.md` and capture
+For a short collaborator trial, start with `docs/tester-guide.md` and capture
 comments with `docs/tester-feedback-template.md`.
 
 ## Notes
@@ -164,3 +175,10 @@ comments with `docs/tester-feedback-template.md`.
 This prototype is deliberately model-free. It does not call the OpenAI API, run
 a local LLM, or inspect hidden activations. Real model adapters should come
 after the synthetic geometry is stable and tested.
+
+## License And Citation
+
+Decision-PGA is released under the MIT License. See `LICENSE`.
+
+If you use this prototype in research, demos, or internal evaluation, please
+cite the repository metadata in `CITATION.cff`.

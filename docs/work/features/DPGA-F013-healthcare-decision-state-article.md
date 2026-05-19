@@ -24,4 +24,4 @@ scores.
 
 - [x] Article frames Decision-PGA as a research scaffold, not a clinical product.
 - [x] Article includes healthcare examples, governance context, and links to public sources.
-- [x] Article includes Mayo-related motivation with a non-institutional caveat.
+- [x] Article includes healthcare motivation with a non-institutional caveat.

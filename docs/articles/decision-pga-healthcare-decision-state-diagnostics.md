@@ -23,10 +23,11 @@ shape of uncertainty around a decision, not merely the size of that
 uncertainty.
 
 This article is a personal technical perspective, not an institutional statement.
-It is motivated by high-accountability healthcare environments, including
-academic medical centers such as Mayo Clinic, where AI is actively being
-explored for clinical, operational, and research workflows. It does not
-represent Mayo Clinic policy or endorsement. The work described here uses no patient data, is not clinical validation, and is not a medical device or clinical decision support product.
+It is motivated by high-accountability healthcare environments where AI is
+being explored for clinical, operational, and research workflows. It does not
+represent any institutional policy, deployment, or endorsement. The work
+described here uses no patient data, is not clinical validation, and is not a
+medical device or clinical decision support product.
 
 ## Why healthcare is a natural stress test
 
@@ -67,13 +68,6 @@ decision support interventions in certified health IT:
 https://healthit.gov/regulations/hti-rules/hti-1-final-rule/. The WHO has
 published guidance on ethics and governance of AI for health:
 https://www.who.int/publications/i/item/9789240029200.
-
-Healthcare institutions are also visibly building AI capacity. Public Mayo
-Clinic pages describe AI as a major area of medical innovation:
-https://www.mayoclinic.org/giving-to-mayo-clinic/our-priorities/artificial-intelligence.
-The Mayo Clinic Platform page describes work around secure, de-identified
-clinical data and digital health innovation:
-https://www.mayoclinic.org/giving-to-mayo-clinic/our-priorities/mayo-clinic-platform.
 
 These sources point in the same direction: healthcare AI needs transparency,
 validation, governance, and practical control surfaces. Decision-PGA is not a

@@ -17,7 +17,7 @@ tags: [testers, docs]
 
 ## Description
 
-Package the current private repo into a lightweight tester experience with
+Package the current repository into a lightweight tester experience with
 clear setup, example payloads, and feedback prompts.
 
 ## Acceptance Criteria

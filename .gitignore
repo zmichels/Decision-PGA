@@ -7,3 +7,5 @@ build/
 dist/
 *.egg-info/
 reports/
+pre-publication reviews/
+.DS_Store

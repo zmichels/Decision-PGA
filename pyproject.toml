@@ -8,6 +8,20 @@ version = "0.1.0"
 description = "Decision-PGA diagnostics for probability clouds on the categorical simplex."
 readme = "README.md"
 requires-python = ">=3.10"
+authors = [
+  {name = "Zachary D. Michels"},
+]
+license = "MIT"
+keywords = ["uncertainty", "decision-making", "principal-geodesic-analysis", "agents", "diagnostics"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
   "numpy>=1.24",
   "matplotlib>=3.8",
@@ -24,6 +38,11 @@ mcp = [
 [project.scripts]
 decision-pga = "decision_pga.cli:main"
 decision-pga-mcp = "decision_pga.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/zmichels/Decision-PGA"
+Repository = "https://github.com/zmichels/Decision-PGA"
+Issues = "https://github.com/zmichels/Decision-PGA/issues"
 
 [tool.setuptools.packages.find]
 include = ["decision_pga*"]

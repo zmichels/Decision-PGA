@@ -1,7 +1,7 @@
 # Tester Guide
 
-This is the short path for trying Decision-PGA from a private GitHub clone. It
-should take about 20 minutes on a machine with Python 3.10+.
+This is the short path for trying Decision-PGA from a public GitHub clone. It
+should take about 20 minutes on a machine with Python 3.10, 3.11, or 3.12.
 
 ## Setup
 

@@ -17,7 +17,7 @@ links:
 
 ## Description
 
-Document a short private-repo tester path and focused feedback prompts.
+Document a short tester path and focused feedback prompts.
 
 ## Acceptance Criteria
 

@@ -22,6 +22,16 @@ class TestPackagingMetadata(unittest.TestCase):
             )
         )
 
+    def test_public_release_metadata_is_declared(self):
+        pyproject = Path("pyproject.toml").read_text(encoding="utf-8")
+
+        self.assertIn('license = "MIT"', pyproject)
+        self.assertIn("Zachary D. Michels", pyproject)
+        self.assertIn("https://github.com/zmichels/Decision-PGA", pyproject)
+        self.assertTrue(Path("LICENSE").exists())
+        self.assertTrue(Path("CITATION.cff").exists())
+        self.assertTrue(Path("CHANGELOG.md").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

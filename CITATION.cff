@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use Decision-PGA, please cite the repository release."
+title: "Decision-PGA"
+version: "0.1.0"
+date-released: "2026-05-19"
+type: software
+authors:
+  - family-names: "Michels"
+    given-names: "Zachary D."
+repository-code: "https://github.com/zmichels/Decision-PGA"
+url: "https://github.com/zmichels/Decision-PGA"
+abstract: "Synthetic-first diagnostics for categorical probability clouds and decision-state geometry."
+license: "MIT"

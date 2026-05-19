@@ -22,4 +22,4 @@ caveats.
 ## Acceptance Criteria
 
 - [x] Article states it is not institutional communication or clinical validation.
-- [x] Article includes FDA, ONC, WHO, and Mayo public source links.
+- [x] Article includes FDA, ONC, WHO, and careful institutional-independence wording.

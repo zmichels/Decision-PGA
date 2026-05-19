@@ -15,7 +15,7 @@ tags: [testers, documentation, examples]
 
 ## Description
 
-Make the private repository easy for a small number of testers to clone, run,
+Make the repository easy for a small number of testers to clone, run,
 evaluate, and critique without requiring model credentials.
 
 ## Acceptance Criteria
