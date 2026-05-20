@@ -23,12 +23,28 @@ python -m unittest discover -s tests -v
 - Keep diagnostic claims conservative: show what the method measures and where
   it is not yet validated.
 
+## Example Datasets And Scenarios
+
+The most useful early contributions are small, human-readable decision
+scenarios. Good examples include:
+
+- a fixed set of candidate actions or labels;
+- 4-20 repeated probability-like observations;
+- a short note explaining what the rows mean;
+- an expected diagnostic state and why entropy or margin alone may be too blunt.
+
+Use `examples/agent/` as the shape reference. Please keep examples synthetic,
+public, or anonymized. If a real workflow inspired the example, remove names,
+private text, user data, credentials, and proprietary payloads before opening an
+issue or pull request.
+
 ## Before Opening A Pull Request
 
 ```bash
 python -m unittest discover -s tests -v
 python scripts/work_tracker.py docs/work --summary
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
+decision-pga diagnose --pretty examples/agent/tool_action_ambiguity.json
 ```
 
 Generated reports under `reports/` are ignored by git.

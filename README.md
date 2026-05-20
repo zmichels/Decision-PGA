@@ -28,13 +28,15 @@ fixtures; the package does not call model APIs or require credentials.
 
 ## Quick Start
 
+Use the public repo directly:
+
 ```bash
 git clone https://github.com/zmichels/Decision-PGA.git
 cd Decision-PGA
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -e .
+python -m pip install -e ".[mcp]"
 python -m unittest discover -s tests -v
 ```
 
@@ -44,10 +46,17 @@ Run the JSON CLI:
 decision-pga diagnose examples/model_outputs.json
 cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/provider_scores.json
+decision-pga diagnose --pretty examples/agent/tool_action_ambiguity.json
+decision-pga diagnose --pretty examples/agent/rag_evidence_conflict.json
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 decision-pga evaluate --suite application --output reports/application-latest
 decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
 ```
+
+For the shortest agent-builder path, start with `docs/agent-toolkit.md`. It
+walks through CLI diagnosis, Python API diagnosis, local MCP launch, and
+copy-paste examples for tool ambiguity, RAG evidence conflict, document
+extraction routing, agent drift, and stable abstention.
 
 Open or execute:
 
@@ -165,10 +174,16 @@ decision-pga-mcp
 The MCP server is local, deterministic, and read-only. It exposes the same
 diagnostic contract as the Python API and CLI. See `docs/mcp-server.md`.
 
+Draft MCP Registry metadata is prepared in `docs/mcp-registry/server.json`, but
+it has not been submitted. The first supported MCP surface is local stdio.
+
 ## Tester Path
 
 For a short collaborator trial, start with `docs/tester-guide.md` and capture
 comments with `docs/tester-feedback-template.md`.
+
+For release and adoption preparation, see `docs/release-checklist.md`,
+`docs/community-engagement.md`, and `docs/outreach/launch-posts.md`.
 
 ## Notes
 

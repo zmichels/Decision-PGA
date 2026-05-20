@@ -1,0 +1,19 @@
+{
+  "source": "probability_cloud",
+  "label": "stable abstain decision",
+  "labels": [
+    "answer_now",
+    "retrieve_more_context",
+    "route_to_reviewer",
+    "abstain"
+  ],
+  "probabilities": [
+    [0.05, 0.08, 0.10, 0.77],
+    [0.04, 0.09, 0.11, 0.76],
+    [0.06, 0.07, 0.10, 0.77],
+    [0.05, 0.08, 0.09, 0.78],
+    [0.04, 0.10, 0.10, 0.76],
+    [0.05, 0.08, 0.11, 0.76]
+  ],
+  "example_note": "The agent repeatedly favors abstention because the request is out of scope or insufficiently supported. Abstention can itself be the stable top action. In this case, proceed means proceed with the abstain route, not answer anyway."
+}

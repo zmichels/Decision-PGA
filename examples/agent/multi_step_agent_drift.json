@@ -1,0 +1,27 @@
+{
+  "source": "trajectory_steps",
+  "label": "multi-step agent drift",
+  "labels": [
+    "retrieve_evidence",
+    "draft_answer",
+    "ask_user",
+    "abstain"
+  ],
+  "steps": [
+    "retrieve_evidence",
+    "retrieve_evidence",
+    "retrieve_evidence",
+    "retrieve_evidence",
+    "retrieve_evidence",
+    "retrieve_evidence",
+    "draft_answer",
+    "draft_answer",
+    "draft_answer",
+    "draft_answer",
+    "draft_answer",
+    "draft_answer"
+  ],
+  "window_size": 3,
+  "step": 3,
+  "example_note": "An agent begins by retrieving evidence, then later starts drafting as if the evidence problem were solved. The diagnostic should flag a regime shift rather than averaging the trace into one static state."
+}

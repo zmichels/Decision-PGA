@@ -1,0 +1,19 @@
+{
+  "source": "probability_cloud",
+  "label": "agent tool-action ambiguity",
+  "labels": [
+    "search_docs",
+    "query_database",
+    "ask_clarifying_question",
+    "draft_answer"
+  ],
+  "probabilities": [
+    [0.46, 0.42, 0.08, 0.04],
+    [0.43, 0.45, 0.08, 0.04],
+    [0.47, 0.40, 0.09, 0.04],
+    [0.41, 0.47, 0.08, 0.04],
+    [0.45, 0.43, 0.08, 0.04],
+    [0.42, 0.46, 0.08, 0.04]
+  ],
+  "example_note": "A support agent is deciding whether to search product documentation or query an internal database before answering. The top action alternates between those two routes, while the other options stay weak. This should read as focused tool ambiguity, not broad confusion."
+}

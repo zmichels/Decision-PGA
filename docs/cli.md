@@ -7,6 +7,7 @@ shell scripts, eval harnesses, and future services.
 decision-pga diagnose examples/model_outputs.json
 cat examples/model_outputs.json | decision-pga diagnose -
 decision-pga diagnose --pretty examples/model_outputs.json
+decision-pga diagnose --pretty examples/agent/tool_action_ambiguity.json
 decision-pga evaluate --config examples/evaluation_config.json --output reports/latest
 decision-pga evaluate --suite application --output reports/application-latest
 decision-pga evaluate --suite document-extraction --output reports/document-extraction-latest
@@ -184,3 +185,21 @@ That output contains `document_extraction_metrics.json`,
 `document_extraction_report.md`, and
 `decision-pga-document-extraction-gap-review.pdf`. Use `--suite all` to write
 benchmark, application, and document-extraction artifacts in one run.
+
+## Agent Toolkit Examples
+
+The examples in `examples/agent/` are copy-paste payloads for agent builders:
+
+- `tool_action_ambiguity.json`
+- `rag_evidence_conflict.json`
+- `document_extraction_routing.json`
+- `multi_step_agent_drift.json`
+- `abstain_defer_decision.json`
+
+Run them with:
+
+```bash
+decision-pga diagnose --pretty examples/agent/tool_action_ambiguity.json
+```
+
+See `docs/agent-toolkit.md` for the human interpretation of each example.

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zmichels/decision-pga",
+  "description": "Local stdio MCP server for Decision-PGA probability-cloud diagnostics over agent decision states.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/zmichels/Decision-PGA",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "identifier": "decision-pga",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio",
+        "command": "decision-pga-mcp"
+      }
+    }
+  ],
+  "tools": [
+    "diagnose_probability_cloud",
+    "diagnose_model_outputs",
+    "diagnose_sampled_responses",
+    "diagnose_trajectory_steps",
+    "explain_decision_pga_metrics"
+  ]
+}

@@ -1,0 +1,2 @@
+gradio>=4.44
+decision-pga @ git+https://github.com/zmichels/Decision-PGA.git

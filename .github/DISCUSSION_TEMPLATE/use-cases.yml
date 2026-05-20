@@ -1,0 +1,16 @@
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: What decision workflow could benefit from a probability-cloud diagnostic?
+  - type: textarea
+    id: candidate_actions
+    attributes:
+      label: Candidate actions
+      description: What are the fixed labels or next actions?
+  - type: textarea
+    id: current_gap
+    attributes:
+      label: Current gap
+      description: Where are confidence, entropy, or margin too blunt?

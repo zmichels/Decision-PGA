@@ -1,0 +1,19 @@
+{
+  "source": "probability_cloud",
+  "label": "RAG evidence conflict",
+  "labels": [
+    "answer_with_retrieval_a",
+    "answer_with_retrieval_b",
+    "retrieve_more_context",
+    "abstain"
+  ],
+  "probabilities": [
+    [0.49, 0.38, 0.09, 0.04],
+    [0.43, 0.44, 0.09, 0.04],
+    [0.51, 0.36, 0.09, 0.04],
+    [0.38, 0.49, 0.09, 0.04],
+    [0.45, 0.43, 0.08, 0.04],
+    [0.41, 0.47, 0.08, 0.04]
+  ],
+  "example_note": "A RAG workflow retrieves two plausible snippets that support incompatible answer paths. The useful next move is not generic uncertainty handling; it is resolving the conflict between the leading evidence routes."
+}
