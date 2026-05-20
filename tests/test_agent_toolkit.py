@@ -65,7 +65,9 @@ class TestAgentToolkitAdoptionArtifacts(unittest.TestCase):
 
         self.assertEqual(metadata["name"], "io.github.zmichels/decision-pga")
         self.assertEqual(metadata["repository"]["url"], "https://github.com/zmichels/Decision-PGA")
+        self.assertEqual(metadata["packages"][0]["registryType"], "pypi")
         self.assertIn("decision-pga-mcp", json.dumps(metadata))
+        self.assertIn("mcp-name: io.github.zmichels/decision-pga", Path("README.md").read_text(encoding="utf-8"))
         self.assertIn("Draft MCP Registry Metadata", quickstart)
         self.assertIn("Why MCP", quickstart)
         self.assertIn("npx @modelcontextprotocol/inspector decision-pga-mcp", quickstart)

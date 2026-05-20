@@ -1,5 +1,7 @@
 # Decision-PGA
 
+<!-- mcp-name: io.github.zmichels/decision-pga -->
+
 Decision-PGA is a synthetic-first prototype for agent-facing diagnostics on
 model decision states. Version 1 analyzes clouds of categorical probability
 vectors with Fisher-Rao/square-root geometry:
