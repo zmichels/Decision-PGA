@@ -31,6 +31,21 @@ decision-pga diagnose --pretty examples/tester/regime_shift_sampled_responses.js
 decision-pga diagnose --pretty examples/tester/provider_scores.json
 ```
 
+## Try The Agent Toolkit Examples
+
+```bash
+decision-pga diagnose --pretty examples/agent/tool_action_ambiguity.json
+decision-pga diagnose --pretty examples/agent/rag_evidence_conflict.json
+decision-pga diagnose --pretty examples/agent/document_extraction_routing.json
+decision-pga diagnose --pretty examples/agent/multi_step_agent_drift.json
+decision-pga diagnose --pretty examples/agent/abstain_defer_decision.json
+open docs/agent-toolkit.md
+```
+
+These examples are synthetic. They are designed to show how an agent-facing
+tool might route tool selection ambiguity, RAG evidence conflict, missing
+document context, trajectory drift, and stable abstention.
+
 ## Run The Benchmark
 
 ```bash
@@ -74,3 +89,9 @@ decision-pga-mcp
 
 The MCP command starts a local stdio server. It is meant to be launched by an
 MCP client or inspector rather than used as a normal terminal command.
+
+For MCP Inspector:
+
+```bash
+npx @modelcontextprotocol/inspector decision-pga-mcp
+```

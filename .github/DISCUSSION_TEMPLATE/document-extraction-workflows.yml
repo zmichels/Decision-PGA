@@ -1,0 +1,16 @@
+body:
+  - type: textarea
+    id: document_task
+    attributes:
+      label: Document workflow
+      description: What extraction, review, or routing decision is involved?
+  - type: textarea
+    id: uncertainty_shape
+    attributes:
+      label: Uncertainty shape
+      description: Is the hard part ambiguity, missing context, boundary sensitivity, or drift?
+  - type: textarea
+    id: safe_example
+    attributes:
+      label: Safe example
+      description: Share only synthetic, public, or anonymized details.

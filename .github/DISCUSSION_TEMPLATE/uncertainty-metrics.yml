@@ -1,0 +1,16 @@
+body:
+  - type: textarea
+    id: metric_question
+    attributes:
+      label: Metric question
+      description: What metric behavior, baseline, or failure mode should be discussed?
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: What synthetic or public fixture would test this?
+  - type: textarea
+    id: interpretation
+    attributes:
+      label: Interpretation
+      description: What would count as useful versus redundant?

@@ -1,0 +1,16 @@
+body:
+  - type: textarea
+    id: integration
+    attributes:
+      label: Agent integration
+      description: Where would Decision-PGA sit in your agent loop?
+  - type: textarea
+    id: payload
+    attributes:
+      label: Payload shape
+      description: What repeated observations can your workflow provide?
+  - type: textarea
+    id: action
+    attributes:
+      label: Desired routing behavior
+      description: What should the agent do with the diagnostic?
