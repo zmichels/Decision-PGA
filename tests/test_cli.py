@@ -86,6 +86,36 @@ class TestDecisionPGACLI(unittest.TestCase):
         self.assertEqual(output["adapter"]["labels"], ["approve", "reject", "defer"])
         self.assertEqual(output["diagnostic"]["recommended_action"], "proceed")
 
+    def test_kinematic_trajectory_payload_returns_motion_metrics(self):
+        payload = {
+            "source": "kinematic_trajectory",
+            "label": "rag tool whiplash",
+            "labels": ["retrieve", "draft", "ask_user"],
+            "steps": ["input", "rag", "output"],
+            "runs": [
+                [
+                    [0.70, 0.20, 0.10],
+                    [0.45, 0.45, 0.10],
+                    [0.20, 0.70, 0.10],
+                ],
+                [
+                    [0.72, 0.18, 0.10],
+                    [0.48, 0.42, 0.10],
+                    [0.10, 0.20, 0.70],
+                ],
+            ],
+        }
+
+        result = _run_cli_with_payload(payload)
+        output = json.loads(result.stdout)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "kinematic_trajectory")
+        self.assertEqual(output["diagnostic"]["source_kind"], "kinematic_trajectory")
+        self.assertEqual(output["diagnostic"]["steps"], ["input", "rag", "output"])
+        self.assertGreater(output["diagnostic"]["systemic_kinetic_energy"], 0.0)
+        self.assertGreater(output["diagnostic"]["systemic_jerk"], 0.0)
+
     def test_invalid_source_returns_machine_readable_error(self):
         payload = {"source": "unknown"}
 

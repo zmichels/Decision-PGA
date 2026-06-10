@@ -18,6 +18,7 @@ from .diagnostics import DecisionPGAConfig, diagnose_probability_cloud
 from .document_extraction_evaluation import run_document_extraction_evaluation_suite
 from .document_extraction_reporting import write_document_extraction_evaluation_report
 from .evaluation import EvaluationConfig, run_evaluation
+from .kinematics import diagnose_kinematic_trajectory
 from .model_adapters import ModelOutputObservation, diagnose_model_outputs
 from .provider_bridges import (
     observation_from_token_scores,
@@ -205,14 +206,16 @@ def diagnose_payload(payload: Mapping[str, object]) -> dict[str, object]:
         return _diagnose_sampled_responses_payload(payload)
     if source == "trajectory_steps":
         return _diagnose_trajectory_steps_payload(payload)
+    if source == "kinematic_trajectory":
+        return _diagnose_kinematic_trajectory_payload(payload)
     if source == "provider_scores":
         return _diagnose_provider_scores_payload(payload)
     if source == "provider_token_scores":
         return _diagnose_provider_token_scores_payload(payload)
     raise ValueError(
         "source must be one of 'probability_cloud', 'model_outputs', "
-        "'sampled_responses', 'trajectory_steps', 'provider_scores', "
-        "or 'provider_token_scores'."
+        "'sampled_responses', 'trajectory_steps', 'kinematic_trajectory', "
+        "'provider_scores', or 'provider_token_scores'."
     )
 
 
@@ -276,6 +279,19 @@ def _diagnose_trajectory_steps_payload(payload: Mapping[str, object]) -> dict[st
         label=_optional_string(payload, "label"),
     )
     return _with_source("trajectory_steps", result.to_dict())
+
+
+def _diagnose_kinematic_trajectory_payload(payload: Mapping[str, object]) -> dict[str, object]:
+    result = diagnose_kinematic_trajectory(
+        _required(payload, "runs"),
+        labels=_optional_sequence(payload, "labels"),
+        step_names=_optional_sequence(payload, "steps"),
+        label=_optional_string(payload, "label"),
+    )
+    return {
+        "source": "kinematic_trajectory",
+        "diagnostic": result.to_dict(),
+    }
 
 
 def _diagnose_provider_scores_payload(payload: Mapping[str, object]) -> dict[str, object]:
