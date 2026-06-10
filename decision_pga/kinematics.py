@@ -30,6 +30,7 @@ class DispersionSummary:
         return {
             "tensor": _json_matrix(self.tensor),
             "eigenvalues": [_json_float(value) for value in self.eigenvalues],
+            "eigenvectors": _json_matrix(self.eigenvectors),
             "total_dispersion": _json_float(self.total_dispersion),
             "pc1_fraction": _json_float(self.pc1_fraction),
         }

@@ -86,6 +86,8 @@ class TestKinematicTrajectory(unittest.TestCase):
         import json
 
         json.dumps(payload)
+        json.dumps(payload["velocity_dispersion"]["eigenvectors"])
+        json.dumps(payload["acceleration_dispersion"]["eigenvectors"])
 
 
 if __name__ == "__main__":
