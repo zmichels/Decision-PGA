@@ -141,6 +141,11 @@ The server tools include:
 - `diagnose_trajectory_steps`
 - `explain_decision_pga_metrics`
 
+For multi-run traces with explicit operational steps, use
+`source: "kinematic_trajectory"` instead of collapsing the trace into rolling
+windows. See `docs/kinematic-trajectory.md` for the tensor contract and the
+metric-first velocity/jerk output.
+
 ## What the input means
 
 Decision-PGA does not require a specific model provider. The required structure

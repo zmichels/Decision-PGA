@@ -39,6 +39,25 @@ class TestAgentToolkitAdoptionArtifacts(unittest.TestCase):
                 self.assertIn("source", payload)
                 self.assertIn("label", payload)
 
+    def test_kinematic_trajectory_example_runs_through_cli(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "decision_pga.cli",
+                "diagnose",
+                "examples/agent/kinematic_trajectory_rag_tool_whiplash.json",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        output = json.loads(result.stdout)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["source"], "kinematic_trajectory")
+        self.assertGreater(output["diagnostic"]["systemic_jerk"], 0.0)
+
     def test_agent_toolkit_doc_has_five_minute_agent_path(self):
         text = Path("docs/agent-toolkit.md").read_text(encoding="utf-8")
 
