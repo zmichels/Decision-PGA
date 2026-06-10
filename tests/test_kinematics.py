@@ -69,6 +69,7 @@ class TestKinematicTrajectory(unittest.TestCase):
         self.assertEqual(len(payload["canonical_path_probabilities"]), 3)
         self.assertLess(payload["systemic_kinetic_energy"], 1e-12)
         self.assertLess(payload["systemic_jerk"], 1e-12)
+        self.assertEqual(payload["primary_drift_labels"], [])
 
     def test_payload_is_json_serializable(self):
         runs = np.array(

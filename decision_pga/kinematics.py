@@ -85,7 +85,7 @@ class KinematicTrajectoryDiagnostic:
             "acceleration_dispersion": self.acceleration_dispersion.to_dict(),
             "primary_drift_labels": _primary_drift_labels(
                 self.labels,
-                self.velocity_dispersion.eigenvectors,
+                self.velocity_dispersion,
             ),
         }
 
@@ -225,9 +225,15 @@ def _dispersion_summary(vectors: np.ndarray) -> DispersionSummary:
 
 def _primary_drift_labels(
     labels: tuple[str, ...],
-    eigenvectors: np.ndarray,
+    dispersion: DispersionSummary,
     limit: int = 3,
 ) -> list[dict[str, object]]:
+    eps = np.finfo(float).eps
+    if dispersion.total_dispersion <= eps:
+        return []
+    if dispersion.eigenvalues.size == 0 or dispersion.eigenvalues[0] <= eps:
+        return []
+    eigenvectors = dispersion.eigenvectors
     if eigenvectors.size == 0:
         return []
     primary = eigenvectors[:, 0]
