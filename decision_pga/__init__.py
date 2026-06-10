@@ -30,6 +30,11 @@ from .evaluation import (
     ScenarioSpec,
     run_evaluation,
 )
+from .kinematics import (
+    DispersionSummary,
+    KinematicTrajectoryDiagnostic,
+    diagnose_kinematic_trajectory,
+)
 from .model_adapters import (
     ModelOutputDiagnostic,
     ModelOutputObservation,
@@ -75,11 +80,13 @@ __all__ = [
     "DecisionPGADiagnostic",
     "DecisionState",
     "DOCUMENT_EXTRACTION_GAP_FAMILIES",
+    "DispersionSummary",
     "DocumentExtractionEvaluationReport",
     "DocumentExtractionScenario",
     "EvaluationConfig",
     "EvaluationReport",
     "FitLabel",
+    "KinematicTrajectoryDiagnostic",
     "ModelOutputDiagnostic",
     "ModelOutputObservation",
     "ObservationKind",
@@ -97,6 +104,7 @@ __all__ = [
     "UnknownPolicy",
     "intrinsic_mean_sphere",
     "normalize_probabilities",
+    "diagnose_kinematic_trajectory",
     "observation_from_provider_scores",
     "observation_from_token_scores",
     "observations_from_provider_scores",

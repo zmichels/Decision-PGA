@@ -90,6 +90,66 @@ class TestKinematicTrajectory(unittest.TestCase):
         json.dumps(payload["velocity_dispersion"]["eigenvectors"])
         json.dumps(payload["acceleration_dispersion"]["eigenvectors"])
 
+    def test_final_deflection_increases_final_step_jerk(self):
+        smooth = np.array(
+            [
+                [
+                    [0.70, 0.20, 0.10],
+                    [0.55, 0.35, 0.10],
+                    [0.40, 0.50, 0.10],
+                    [0.25, 0.65, 0.10],
+                ],
+                [
+                    [0.68, 0.22, 0.10],
+                    [0.53, 0.37, 0.10],
+                    [0.38, 0.52, 0.10],
+                    [0.23, 0.67, 0.10],
+                ],
+            ]
+        )
+        deflected = smooth.copy()
+        deflected[1, 3, :] = [0.10, 0.20, 0.70]
+
+        smooth_payload = diagnose_kinematic_trajectory(smooth).to_dict()
+        deflected_payload = diagnose_kinematic_trajectory(deflected).to_dict()
+
+        self.assertGreater(
+            deflected_payload["step_jerk"][-1],
+            smooth_payload["step_jerk"][-1] * 3.0,
+        )
+        self.assertGreater(deflected_payload["systemic_jerk"], smooth_payload["systemic_jerk"])
+
+    def test_primary_drift_labels_use_supplied_labels(self):
+        runs = np.array(
+            [
+                [
+                    [0.70, 0.20, 0.10],
+                    [0.55, 0.35, 0.10],
+                    [0.40, 0.50, 0.10],
+                ],
+                [
+                    [0.20, 0.70, 0.10],
+                    [0.35, 0.55, 0.10],
+                    [0.50, 0.40, 0.10],
+                ],
+            ]
+        )
+
+        payload = diagnose_kinematic_trajectory(
+            runs,
+            labels=["retrieve", "draft", "abstain"],
+        ).to_dict()
+
+        drift_labels = {item["label"] for item in payload["primary_drift_labels"]}
+        self.assertIn("retrieve", drift_labels)
+        self.assertIn("draft", drift_labels)
+
+    def test_public_package_exports_kinematic_api(self):
+        import decision_pga
+
+        self.assertTrue(hasattr(decision_pga, "diagnose_kinematic_trajectory"))
+        self.assertTrue(hasattr(decision_pga, "KinematicTrajectoryDiagnostic"))
+
 
 if __name__ == "__main__":
     unittest.main()
